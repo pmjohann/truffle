@@ -5,8 +5,12 @@ ARG TRUFFLE_VERSION=5.3.0
 ARG SOLC_VERSION=0.8.3
 
 # INSTALL DEPENDENCIES
-RUN apk add nodejs npm
-RUN npm i -g npm && npm i -g truffle@$TRUFFLE_VERSION solc@$SOLC_VERSION
+RUN apk add --no-cache nodejs npm && \
+    npm i -g npm && \
+    npm i -g truffle@$TRUFFLE_VERSION solc@$SOLC_VERSION && \
+    apk del npm
+
+# SET WORKDIR, ENTRYPOINT AND DEFAULT CMD
 WORKDIR /app
 ENTRYPOINT ["truffle"]
 CMD ["test", "--show-events", "--compile-all"]
