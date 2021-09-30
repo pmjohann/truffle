@@ -1,7 +1,7 @@
-FROM alpine:3.13.4
+FROM alpine:3.14.2
 
 # DEFINE TRUFFLE VERSION TO BE INSTALLED
-ARG VERSION=5.3.0
+ARG VERSION=5.4.12
 
 # INSTALL DEPENDENCIES
 RUN apk add --no-cache nodejs npm && \
